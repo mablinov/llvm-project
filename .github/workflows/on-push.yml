@@ -24,4 +24,7 @@ jobs:
       if: always()
     - run: cat "${{ github.workspace }}/clang-format.patch"
       if: always()
-
+    - name: Comment Pull Request
+      uses: thollander/actions-comment-pull-request@v2.3.1
+      with:
+        filePath: ${{ github.workspace }}/clang-format.patch
