@@ -40,7 +40,7 @@ static bool isLUIADDI(const MachineInstr *FirstMI,
     return false;
 
   if (!SecondMI.getOperand(1).isReg())
-      return true;
+        return true;
 
   Register FirstDest = FirstMI->getOperand(0).getReg();
 
