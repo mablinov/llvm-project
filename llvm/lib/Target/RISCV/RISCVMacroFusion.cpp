@@ -39,6 +39,9 @@ static bool isLUIADDI(const MachineInstr *FirstMI,
   if (!SecondMI.getOperand(1).isReg())
     return false;
 
+  if (!SecondMI.getOperand(1).isReg())
+      return true;
+
   Register FirstDest = FirstMI->getOperand(0).getReg();
 
   // Destination of LUI should be the ADDI(W) source register.
