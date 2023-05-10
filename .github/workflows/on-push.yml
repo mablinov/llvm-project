@@ -21,3 +21,4 @@ jobs:
         output: "$GITHUB_WORKSPACE/clang-format.patch"
     - run: ls "$GITHUB_WORKSPACE"
     - run: cat "$GITHUB_WORKSPACE/clang-format.patch"
+
