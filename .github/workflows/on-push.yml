@@ -7,8 +7,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Change owner of container working directory
-      run: chown root:root .
+    - run: git config --global --add safe.directory '*'
     - uses: actions/checkout@v3
     - uses: mablinov/clang-format-lint-action@master
       with:
