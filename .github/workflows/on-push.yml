@@ -12,7 +12,7 @@ jobs:
     - run: git fetch origin $GITHUB_HEAD_REF --depth 1
     - run: git config --global --add safe.directory '*'
     - run: git config --global --add safe.directory '/github/workspace'
-    - run: touch "${{ github.workspace}}/clang-format.patch"
+    - run: touch "${{ github.workspace }}/clang-format.patch"
     - uses: mablinov/clang-format-lint-action@master
       with:
         source: '.'
