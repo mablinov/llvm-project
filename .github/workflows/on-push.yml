@@ -18,7 +18,7 @@ jobs:
         # exclude: './lib'
         extensions: 'h,cpp,c'
         clangFormatVersion: 16
-        output: "${{env.GITHUB_WORKSPACE}}/clang-format.patch"
+        output: ${{env.GITHUB_WORKSPACE}}/clang-format.patch
     - run: ls "$GITHUB_WORKSPACE"
     - run: cat "$GITHUB_WORKSPACE/clang-format.patch"
 
