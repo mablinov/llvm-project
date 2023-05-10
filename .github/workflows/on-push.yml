@@ -27,5 +27,6 @@ jobs:
     - name: Comment Pull Request
       uses: thollander/actions-comment-pull-request@v2.3.1
       with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         pr_number: ${{github.event.number}}
         filePath: ${{ github.workspace }}/clang-format.patch
