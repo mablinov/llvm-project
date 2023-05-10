@@ -27,4 +27,5 @@ jobs:
     - name: Comment Pull Request
       uses: thollander/actions-comment-pull-request@v2.3.1
       with:
+        pr_number: ${{github.event.number}}
         filePath: ${{ github.workspace }}/clang-format.patch
