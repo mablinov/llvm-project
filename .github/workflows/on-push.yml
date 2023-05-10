@@ -4,13 +4,31 @@ on: [pull_request, pull_request_target]
 
 jobs:
   build:
+    permissions:
+      pull-requests: write
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - uses: mablinov/clang-format-lint-action
+    - uses: actions/checkout@v3
+    - run: git fetch origin $GITHUB_BASE_REF --depth 1
+    - run: git fetch origin $GITHUB_HEAD_REF --depth 1
+    - run: git config --global --add safe.directory '*'
+    - run: git config --global --add safe.directory '/github/workspace'
+    - run: touch "${{ github.workspace }}/clang-format.patch"
+    - uses: mablinov/clang-format-lint-action@master
       with:
         source: '.'
         # exclude: './lib'
         extensions: 'h,cpp,c'
         clangFormatVersion: 16
+        output: ${{ github.workspace }}/clang-format.patch
+    - run: ls "${{ github.workspace }}"
+      if: always()
+    - run: cat "${{ github.workspace }}/clang-format.patch"
+      if: always()
+    - name: Comment Pull Request
+      uses: thollander/actions-comment-pull-request@v2.3.1
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        pr_number: ${{github.event.number}}
+        filePath: ${{ github.workspace }}/clang-format.patch
