@@ -20,5 +20,7 @@ jobs:
         clangFormatVersion: 16
         output: ${{env.GITHUB_WORKSPACE}}/clang-format.patch
     - run: ls "$GITHUB_WORKSPACE"
+      if: always()
     - run: cat "$GITHUB_WORKSPACE/clang-format.patch"
+      if: always()
 
